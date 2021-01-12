@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+  <Resources NoComponents="true">
+    <!--<ServicesDlls>
+	<string>..\..\lib\SCCM\AdminUI.WqlQueryEngine.dll</string>
+	<string>..\..\lib\SCCM\Microsoft.ConfigurationManagement.ManagementProvider.dll</string>
+	<string>..\..\output\binservices\Decisions.SCCM.dll</string>
+	<string>..\..\output\binservices\Decisions.SCCM.ServerSide.dll</string>
+    </ServicesDlls>-->
+    <CliDlls/>
+    <WebPages/>
+    <!--<AgentDlls>
+		<string>..\..\lib\SCCM\AdminUI.WqlQueryEngine.dll</string>
+		<string>..\..\lib\SCCM\Microsoft.ConfigurationManagement.ManagementProvider.dll</string>
+		<string>.\bin\Debug\Decisions.SCCM.NET.dll</string>
+    </AgentDlls>-->
+    <InstallScript>
+    </InstallScript>
+    <SqlScripts />
+    <ObjectsToImport >
+        <string>.\objects\DecisionsDBIntegrationConnection\*.*</string>
+    </ObjectsToImport>
+    <MsSqlScript>
+    </MsSqlScript>
+    <MySqlScript>
+    </MySqlScript>
+  </Resources>
+   <ImagePath>../../Content/Images/Modules/sccm.png</ImagePath>
+  <Description>Integration with Microsoft's System Center Configuration Manager for automating IT management tasks.  This module includes Settings and Flow Steps for use in the Flow Designer that can be used to send Task Sequences to machine collections in order to automate common system management functions.  Examples would be: installing software updates to computers in a company only after a manager approves the updates using our flow engine.</Description>
+</CreateModuleInfo>

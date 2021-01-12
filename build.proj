@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="build_all">
+  <PropertyGroup>
+    <CreateModule>..\..\output\binutils\CreateModule.exe</CreateModule>
+    <CreateModuleVersion>..\..\output\binutils\UpdateModuleVersionOnBuild.exe</CreateModuleVersion>
+    <ModuleName>Decisions.SCCM</ModuleName>
+    <OutputType>Library</OutputType>
+    <RootNamespaces>SCCMModule</RootNamespaces>
+	<AssemblyName>Decisions.SCCM.Net</AssemblyName>
+	<TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+	<OutputPath>..\..\modules\Decisions.SCCM\bin\Debug</OutputPath>
+	<Configuration>Debug</Configuration>
+	<BuildDest>..\..\output\binservices</BuildDest>
+	<LibPath>..\..\lib</LibPath>
+	<CheckChanges>..\..\output\binutils\CheckForFileChanges.exe</CheckChanges>
+  </PropertyGroup>
+  
+ 	<Target Name="build_all">
+		<Exec Command="$(CheckChanges) &quot;.&quot;" ConsoleToMsBuild="true">
+			<Output TaskParameter="ConsoleOutput" PropertyName="ShouldBuild" />
+		</Exec>
+		<CallTarget Targets="do_build" Condition="$(ShouldBuild.Contains('CHANGES'))" />
+		<Exec Command="$(CheckChanges) &quot;.&quot;" ConsoleToMsBuild="true"/>
+	</Target>
+
+	<Target Name="do_build">
+	 <MakeDir Directories="../../output/modules" />
+    <CallTarget Targets="build_module"/>
+
+  </Target>
+
+        <Target Name="build_agent">
+		<CallTarget Targets="clean"/>
+		<CallTarget Targets="Build"/>
+	</Target>
+	
+	<Target Name="clean">
+		<RemoveDir Directories=".\obj\" ContinueOnError="true"/>
+	</Target>
+	
+	<ItemGroup>
+		<Compile Include="**\*.cs;" 
+			Exclude="obj\**.*;
+			QuickTesterConsole\**;
+			Decisions.SCCM.ServerSide\**;
+			**\AssemblyInfo.cs;
+			"/>
+	</ItemGroup>	
+
+	<ItemGroup>
+		<Reference Include="..\..\lib\decisions\DecisionsFramework.Net.dll" />
+		<Reference Include="..\..\lib\SCCM\AdminUI.WqlQueryEngine.dll" />
+		<Reference Include="..\..\lib\SCCM\Microsoft.ConfigurationManagement.ManagementProvider.dll" />
+	</ItemGroup>
+	
+	<Import Project="$(LibPath)\msbuild\decisions.net.Targets" />
+       
+	<Target Name="build_net_clients">
+		<MakeDir Directories="../../output/modules/Decisions.SCCM.Clients" />
+	    <Exec Command="$(CreateModule) -buildnetclients Decisions.SCCM -output &quot;../../output/modules/Decisions.SCCM.Clients&quot; -buildfile Module.Build.xml"/>
+	</Target>
+
+  <Target Name="build_module">
+	  <Exec Command="$(CreateModuleVersion) &quot;..\..\Build.version&quot; &quot;Module.Build.xml&quot; &quot;Module.Build.versioned.xml&quot; &quot;..\..\Version.cs&quot; false &quot;Decisions.SCCM&quot; &quot;..\AllModules.xml&quot;"/>
+	  <Exec Command="$(CreateModule) -buildmodule $(ModuleName) -output &quot;..\..\output\modules&quot; -buildfile Module.Build.versioned.xml"/>
+
+ </Target>
+
+<Import Project="..\..\lib\msbuild\MSBuild.Community.Tasks.Targets"/>
+ 
+</Project>

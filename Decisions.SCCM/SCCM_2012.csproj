@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75E7D78D-AD21-4DBA-BEE9-4241F2963BB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCCM_2012</RootNamespace>
+    <AssemblyName>SCCM_2012</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdminUI.WqlQueryEngine, Version=5.0.0.0, Culture=neutral, PublicKeyToken=365143bb27e7ac8b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AdminUI.WqlQueryEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="DecisionsFramework, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\output\bincore\DecisionsFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ConfigurationManagement.ManagementProvider, Version=5.0.0.0, Culture=neutral, PublicKeyToken=365143bb27e7ac8b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.ConfigurationManagement.ManagementProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTypes.cs" />
+    <Compile Include="DeployTaskSequenceToCollectionSP1.cs" />
+    <Compile Include="SCCM2012Steps.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCCMAddBoundariesToBoundaryGroupStep.cs" />
+    <Compile Include="SCCMAddDevicesToExistingCollectionStep.cs" />
+    <Compile Include="SCCMAddSiteServerToBoundaryGroupStep.cs" />
+    <Compile Include="SCCMBaseStep.cs" />
+    <Compile Include="SCCMConnectionInfo.cs" />
+    <Compile Include="SCCMCreateBoundaryGroupStep.cs" />
+    <Compile Include="SCCMCreateBoundaryStep.cs" />
+    <Compile Include="SCCMCreateDeviceCollectionStep.cs" />
+    <Compile Include="SCCMCreateDeviceStep.cs" />
+    <Compile Include="SCCMCreateDynamicCollectionForDevicesStep.cs" />
+    <Compile Include="SCCMDeleteBoundaryGroupStep.cs" />
+    <Compile Include="SCCMDeleteBoundaryStep.cs" />
+    <Compile Include="SCCMDeleteCollectionByIdStep.cs" />
+    <Compile Include="SCCMDeleteDeviceByIdStep.cs" />
+    <Compile Include="SCCMDeleteVariableFromCollectionStep.cs" />
+    <Compile Include="SCCMDeleteVariableFromDeviceStep.cs" />
+    <Compile Include="SCCMDeployApplicationToCollectionStep.cs" />
+    <Compile Include="SCCMDeployTaskSequenceToCollectionStep.cs" />
+    <Compile Include="SCCMDeployTaskSequenceToCollectionWithOptionsStep.cs" />
+    <Compile Include="SCCMEditBoundaryByIDStep.cs" />
+    <Compile Include="SCCMEditBoundaryGroupByIDStep.cs" />
+    <Compile Include="SCCMEditDeviceStep.cs" />
+    <Compile Include="SCCMGetAdvertisementById.cs" />
+    <Compile Include="SCCMGetAllApplicationsStep.cs" />
+    <Compile Include="SCCMGetAllBoundariesStep.cs" />
+    <Compile Include="SCCMGetAllBoundaryGroupsStep.cs" />
+    <Compile Include="SCCMGetAllCollectionsStep.cs" />
+    <Compile Include="SCCMGetAllDeploymentSummaries.cs" />
+    <Compile Include="SCCMGetAllDevicesStep.cs" />
+    <Compile Include="SCCMGetAllPackagesStep.cs" />
+    <Compile Include="SCCMGetAllSitesStep.cs" />
+    <Compile Include="SCCMGetAllTaskSequencesStep.cs" />
+    <Compile Include="SCCMGetApplicationByIdStep.cs" />
+    <Compile Include="SCCMGetBoundariesByBoundaryGroupIdStep.cs" />
+    <Compile Include="SCCMGetBoundaryByIdStep.cs" />
+    <Compile Include="SCCMGetBoundaryGroupByIDStep.cs" />
+    <Compile Include="SCCMGetBoundaryGroupByNameStep.cs" />
+    <Compile Include="SCCMGetBoundaryGroupsByBoundaryIDStep.cs" />
+    <Compile Include="SCCMGetCollectionByIdStep.cs" />
+    <Compile Include="SCCMGetCollectionByNameStep.cs" />
+    <Compile Include="SCCMGetDeploymentSummariesByCollectionId.cs" />
+    <Compile Include="SCCMGetDeviceDetailsByDeviceNetbiosNameStep.cs" />
+    <Compile Include="SCCMGetDevicesByCollectionIdStep.cs" />
+    <Compile Include="SCCMGetDevicesByCollectionNameStep.cs" />
+    <Compile Include="SCCMGetSiteByServerNameStep.cs" />
+    <Compile Include="SCCMGetSiteBySiteCodeStep.cs" />
+    <Compile Include="SCCMGetSiteBySiteNameStep.cs" />
+    <Compile Include="SCCMGetSitesBySiteTypeStep.cs" />
+    <Compile Include="SCCMGetSiteSystemByServerNameAndRoleStep.cs" />
+    <Compile Include="SCCMGetSiteSystemByServerNameStep.cs" />
+    <Compile Include="SCCMGetSiteSystemsAssociatedToBoundaryGroupStep.cs" />
+    <Compile Include="SCCMGetSiteSystemsByRoleNameStep.cs" />
+    <Compile Include="SCCMGetVariablesForCollectionStep.cs" />
+    <Compile Include="SCCMGetDeviceDetailsByDeviceNameStep.cs" />
+    <Compile Include="SCCMGetDeviceDetailsByIdStep.cs" />
+    <Compile Include="SCCMGetTaskSequenceByIdStep.cs" />
+    <Compile Include="SCCMGetVariablesForDeviceStep.cs" />
+    <Compile Include="SCCMRefreshCollectionMembershipStep.cs" />
+    <Compile Include="SCCMRemoveAssignedSiteFromBoundaryGroupStep.cs" />
+    <Compile Include="SCCMRemoveBoundariesFromBoundaryGroupStep.cs" />
+    <Compile Include="SCCMRemoveSiteServerFromBoundaryGroupStep.cs" />
+    <Compile Include="SCCMSetAssignedSiteOnBoundaryGroupStep.cs" />
+    <Compile Include="SCCMSetVariableForCollectionStep.cs" />
+    <Compile Include="SCCMSetVariableForDeviceStep.cs" />
+    <Compile Include="SCCMUpdateDeviceStep.cs" />
+    <Compile Include="SetSCCMConnection.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
